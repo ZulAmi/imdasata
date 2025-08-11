@@ -1,23 +1,209 @@
-# Digital Mental Wellness Assistant for Migrant Workers
+# SATA - Sentiment Analysis Therapy Assistant
 
-This project is a Next.js-based digital mental wellness assistant tailored for migrant workers, featuring:
+A comprehensive AI-powered mental health platform combining voice sentiment analysis, mood tracking, and clinical-grade reporting for mental health professionals and individuals seeking emotional wellbeing support.
 
-- WhatsApp integration capability
-- Multi-language support (English, Mandarin, Bengali, Tamil, Burmese, Bahasa Indonesia)
-- PWA support for entry-level smartphones
-- Anonymous authentication system
-- PDPA-compliant data handling
-- PostgreSQL database with Prisma ORM
-- Redis for caching and session management
+![SATA Platform](https://img.shields.io/badge/Platform-Mental%20Health%20AI-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue) ![React](https://img.shields.io/badge/React-18-blue) ![Next.js](https://img.shields.io/badge/Next.js-14-black) ![Azure](https://img.shields.io/badge/Azure-Cognitive%20Services-blue)
 
-## Database Schema
+## 🌟 Key Features
 
-The application uses a comprehensive Prisma schema designed for mental wellness with these key entities:
+### 🎙️ Voice Sentiment Analysis
 
-### Core Models
+- **Real-time emotion detection** from voice recordings using Azure Cognitive Services
+- **Multi-language support** with accent recognition
+- **Advanced audio processing** with noise reduction and quality enhancement
+- **Emotional tone extraction** with confidence scoring
+- **Stress indicator detection** and mental health keyword identification
+- **Privacy-first design** with on-device processing capabilities
 
-- **AnonymousUser**: PDPA-compliant user tracking with unique identifiers (no personal data)
-- **PHQ4Assessment**: Depression and anxiety screening results with timestamps
+### 😊 Comprehensive Mood Tracking
+
+- **Emoji-based mood selection** with intuitive 10-point scale
+- **Voice note integration** with sentiment analysis correlation
+- **Multi-modal input** supporting text, voice, and tag-based categorization
+- **Real-time trend visualization** with pattern recognition
+- **Personalized AI insights** with actionable recommendations
+- **Daily streak tracking** and habit building features
+
+### 📈 Advanced Analytics Engine
+
+- **Linear regression analysis** for mood trend prediction
+- **Pattern recognition algorithms** for emotional state identification
+- **Correlation analysis** with clinical assessment scores (PHQ-4, GAD-7)
+- **Statistical confidence intervals** and trend reliability scoring
+- **Anomaly detection** for concerning patterns
+- **Proactive intervention triggers** based on risk assessment
+
+### 🏥 Healthcare Integration
+
+- **HIPAA-compliant reporting** with professional clinical formatting
+- **Multi-format data export** (HTML reports, JSON data, CSV summaries)
+- **Assessment correlation analysis** with standardized mental health tools
+- **Anonymous data processing** with privacy protection controls
+- **Healthcare provider dashboards** with patient progress tracking
+- **Clinical decision support** through AI-generated insights
+
+## 🏗️ Technical Architecture
+
+### Frontend Stack
+
+- **React 18** with TypeScript for type-safe component development
+- **Next.js 14.2.15** for full-stack framework with SSR/SSG capabilities
+- **Tailwind CSS** for responsive design and component styling
+- **Chart.js/Recharts** for advanced data visualization
+- **Web Audio API** for voice recording and processing
+
+### Backend Integration
+
+- **Azure Cognitive Services** for voice sentiment analysis
+- **EventEmitter Architecture** for real-time data processing
+- **LocalStorage/IndexedDB** for client-side data persistence
+- **RESTful API design** for healthcare provider integration
+- **WebRTC** for secure voice transmission
+
+### AI/ML Components
+
+- **Natural Language Processing** for text sentiment analysis
+- **Voice Recognition** with emotional tone detection
+- **Pattern Recognition** algorithms for mood trend analysis
+- **Machine Learning** models for personalized insight generation
+- **Statistical Analysis** with confidence scoring and prediction
+
+## 📁 Project Structure
+
+```
+SATA/
+├── src/
+│   ├── components/
+│   │   ├── VoiceAnalysisInterface.tsx      # Voice recording and analysis UI
+│   │   ├── MoodLoggingInterface.tsx        # Comprehensive mood tracking
+│   │   ├── MoodTrendsVisualization.tsx     # Data visualization charts
+│   │   └── HealthcareExport.tsx            # Clinical reporting system
+│   ├── lib/
+│   │   ├── voice-sentiment-analyzer.ts     # Core voice analysis engine
+│   │   ├── mood-analytics-engine.ts        # Advanced mood analytics
+│   │   ├── azure-integration.ts            # Azure Cognitive Services
+│   │   └── engagement-integration.ts       # User engagement tracking
+│   ├── pages/
+│   │   ├── index.tsx                       # Main landing page
+│   │   ├── voice-analysis.tsx              # Voice analysis demo page
+│   │   └── mood-dashboard.tsx              # Comprehensive mood dashboard
+│   └── types/
+│       └── mood-types.ts                   # TypeScript type definitions
+├── public/
+├── docs/
+└── README.md
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm/yarn
+- Azure Cognitive Services account
+- Modern web browser with microphone access
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-org/sata.git
+   cd sata
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Environment Configuration**
+   Create a `.env.local` file:
+
+   ```env
+   # Azure Cognitive Services
+   AZURE_SPEECH_KEY=your_azure_speech_key
+   AZURE_SPEECH_REGION=your_azure_region
+   AZURE_TEXT_ANALYTICS_KEY=your_text_analytics_key
+   AZURE_TEXT_ANALYTICS_ENDPOINT=your_text_analytics_endpoint
+
+   # Application Settings
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+   NEXT_PUBLIC_ENABLE_ANALYTICS=true
+   ```
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. **Open the application**
+   Navigate to `http://localhost:3000` in your browser
+
+## 🎯 Core Functionality
+
+### Voice Sentiment Analysis Workflow
+
+1. **Audio Capture**: High-quality voice recording with noise reduction
+2. **Azure Processing**: Speech-to-text conversion with emotional tone analysis
+3. **Sentiment Extraction**: Multi-dimensional emotion scoring (happiness, stress, anxiety)
+4. **Pattern Recognition**: Historical trend analysis and anomaly detection
+5. **Insight Generation**: Personalized recommendations and intervention triggers
+
+### Mood Tracking Process
+
+1. **Emoji Selection**: Intuitive 10-point mood scale with emotional descriptors
+2. **Multi-Modal Input**: Text descriptions, voice notes, and contextual tags
+3. **Real-Time Analysis**: Immediate sentiment scoring and trend calculation
+4. **Pattern Detection**: Long-term mood patterns and correlation analysis
+5. **Healthcare Integration**: Professional report generation for clinical use
+
+### Healthcare Provider Features
+
+1. **Patient Dashboard**: Comprehensive mood tracking overview
+2. **Clinical Reports**: HIPAA-compliant professional documentation
+3. **Assessment Integration**: PHQ-4, GAD-7, and custom scale correlation
+4. **Progress Tracking**: Longitudinal analysis with treatment effectiveness
+5. **Risk Assessment**: Automated alerts for concerning patterns
+
+## 📊 Analytics & Insights
+
+### Mood Analytics Engine
+
+- **Trend Analysis**: Linear regression with confidence intervals
+- **Pattern Recognition**: Seasonal, weekly, and daily mood patterns
+- **Correlation Analysis**: Mood vs. external factors and assessments
+- **Anomaly Detection**: Statistical outliers and concerning patterns
+- **Predictive Modeling**: Future mood state prediction with confidence scoring
+
+### Healthcare Metrics
+
+- **Assessment Correlation**: PHQ-4, GAD-7, and custom tool integration
+- **Treatment Effectiveness**: Before/after intervention analysis
+- **Risk Stratification**: Patient categorization based on mood patterns
+- **Clinical Decision Support**: Evidence-based recommendation generation
+
+## 🔒 Privacy & Security
+
+### Data Protection
+
+- **HIPAA Compliance**: Healthcare-grade data handling and storage
+- **Anonymous Processing**: User identity protection with secure identifiers
+- **On-Device Analysis**: Local processing where possible to minimize data transmission
+- **Encryption**: End-to-end encryption for sensitive data
+- **Access Controls**: Role-based permissions for healthcare providers
+
+### Privacy Features
+
+- **Data Anonymization**: Personal information removal for analytics
+- **Consent Management**: Granular privacy controls and user consent
+- **Data Retention**: Configurable retention policies with secure deletion
+- **Audit Trails**: Comprehensive logging for compliance and security
 - **MoodLog**: Daily mood tracking with sentiment analysis
 - **MentalHealthResource**: Curated directory of mental health resources
 - **SupportGroup**: Peer support groups with multi-language support

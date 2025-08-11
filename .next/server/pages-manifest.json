@@ -1,1 +1,10 @@
-{"/_app":"pages/_app.js","/_document":"pages/_document.js","/_error":"pages/_error.js","/admin-dashboard":"pages/admin-dashboard.html","/admin-login":"pages/admin-login.html","/analytics-hub":"pages/analytics-hub.html","/api/assessment/phq4":"pages/api/assessment/phq4.js","/api/feedback":"pages/api/feedback.js","/api/messages":"pages/api/messages.js","/api/mood/log":"pages/api/mood/log.js","/api/recommendations":"pages/api/recommendations.js","/api/resources":"pages/api/resources.js","/api/scheduler/run-nudges":"pages/api/scheduler/run-nudges.js","/api/utilization":"pages/api/utilization.js","/api/track-interaction":"pages/api/track-interaction.js","/api/whatsapp/send-nudge":"pages/api/whatsapp/send-nudge.js","/api/whatsapp":"pages/api/whatsapp.js","/gamification-admin":"pages/gamification-admin.html","/gamification":"pages/gamification.html","/integrated-analytics-hub":"pages/integrated-analytics-hub.html","/voice-sentiment-demo":"pages/voice-sentiment-demo.html","/api/analytics/phq4":"pages/api/analytics/phq4.js","/assessment":"pages/assessment.js","/ai-recommendations":"pages/ai-recommendations.js","/chat-moderation":"pages/chat-moderation.js","/crisis":"pages/crisis.js","/buddy-system":"pages/buddy-system.js","/dashboard":"pages/dashboard.js","/index-new":"pages/index-new.js","/":"pages/index.js","/comprehensive-demo":"pages/comprehensive-demo.js","/mood":"pages/mood.js","/buddy-admin":"pages/buddy-admin.js","/peer-support-chat":"pages/peer-support-chat.js","/peer-support":"pages/peer-support.js","/phq4-assessment":"pages/phq4-assessment.js","/phq4":"pages/phq4.js","/resources-demo":"pages/resources-demo.js","/resources":"pages/resources.js","/resources-admin-simple":"pages/resources-admin-simple.js","/resources-directory":"pages/resources-directory.js","/resources-admin":"pages/resources-admin.js","/404":"pages/404.html"}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/analytics-hub": "pages/analytics-hub.js",
+  "/": "pages/index.js",
+  "/admin-login": "pages/admin-login.js",
+  "/reports": "pages/reports.js",
+  "/admin-dashboard": "pages/admin-dashboard.js"
+}
