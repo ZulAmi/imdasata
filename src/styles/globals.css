@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SATA Mental Wellness Assistant - Global Styles */
+/* Following accessibility and PDPA-compliant design patterns */
+
+@layer base {
+  :root {
+    /* SATA Brand Colors - Mental Health Focused */
+    --color-primary: 34 197 94; /* Calming green */
+    --color-primary-dark: 21 128 61;
+    --color-secondary: 59 130 246; /* Trust blue */
+    --color-accent: 168 85 247; /* Mindfulness purple */
+    --color-warning: 245 158 11; /* Attention amber */
+    --color-error: 239 68 68; /* Alert red */
+    --color-success: 34 197 94; /* Positive green */
+
+    /* Neutral Colors for PDPA-compliant UI */
+    --color-background: 255 255 255;
+    --color-surface: 249 250 251;
+    --color-border: 229 231 235;
+    --color-text-primary: 17 24 39;
+    --color-text-secondary: 75 85 99;
+    --color-text-muted: 156 163 175;
+  }
+
+  [data-theme="dark"] {
+    --color-background: 17 24 39;
+    --color-surface: 31 41 55;
+    --color-border: 75 85 99;
+    --color-text-primary: 243 244 246;
+    --color-text-secondary: 209 213 219;
+    --color-text-muted: 156 163 175;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Accessibility improvements for mental health platform */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --color-border: 0 0 0;
+      --color-text-secondary: 0 0 0;
+    }
+  }
+
+  /* Reduced motion support for users with anxiety */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* SATA Mental Health UI Components */
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-secondary/90 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-lg border border-border bg-transparent px-4 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  }
+
+  /* Mental Health Assessment Cards */
+  .assessment-card {
+    @apply rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md;
+  }
+
+  .mood-indicator {
+    @apply inline-flex h-3 w-3 rounded-full;
+  }
+
+  .mood-indicator.very-low {
+    @apply bg-red-500;
+  }
+
+  .mood-indicator.low {
+    @apply bg-orange-500;
+  }
+
+  .mood-indicator.moderate {
+    @apply bg-yellow-500;
+  }
+
+  .mood-indicator.good {
+    @apply bg-green-500;
+  }
+
+  .mood-indicator.excellent {
+    @apply bg-blue-500;
+  }
+
+  /* Crisis intervention styling */
+  .crisis-alert {
+    @apply rounded-lg border-l-4 border-red-500 bg-red-50 p-4 text-red-800;
+  }
+
+  .crisis-button {
+    @apply inline-flex items-center justify-center rounded-lg bg-red-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors;
+  }
+
+  /* Multi-language support indicators */
+  .language-badge {
+    @apply inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800;
+  }
+
+  /* PDPA compliance indicators */
+  .privacy-badge {
+    @apply inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800;
+  }
+
+  /* Form styling for mental health assessments */
+  .form-input {
+    @apply block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50;
+  }
+
+  .form-textarea {
+    @apply block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50 resize-none;
+  }
+
+  .form-select {
+    @apply block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50;
+  }
+
+  .form-checkbox {
+    @apply h-4 w-4 rounded border-border text-primary focus:ring-primary focus:ring-offset-0;
+  }
+
+  .form-radio {
+    @apply h-4 w-4 border-border text-primary focus:ring-primary focus:ring-offset-0;
+  }
+
+  /* Loading states for WhatsApp integration */
+  .loading-spinner {
+    @apply inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent;
+  }
+
+  /* Responsive containers for mobile-first design */
+  .container-responsive {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto max-w-2xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Anonymous user indicators */
+  .anonymous-badge {
+    @apply inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800;
+  }
+}
+
+@layer utilities {
+  /* SATA-specific utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-gradient-mental-health {
+    @apply bg-gradient-to-r from-green-400 via-blue-500 to-purple-600;
+  }
+
+  .bg-gradient-calm {
+    @apply bg-gradient-to-r from-blue-100 to-green-100;
+  }
+
+  /* Accessibility utilities */
+  .sr-only-focusable:focus {
+    @apply not-sr-only;
+  }
+
+  /* PDPA-compliant hidden text */
+  .pdpa-hidden {
+    @apply select-none blur-sm transition-all duration-300 hover:blur-none;
+  }
+
+  /* Mental health color scales */
+  .mood-very-low {
+    @apply bg-red-100 text-red-800 border-red-200;
+  }
+
+  .mood-low {
+    @apply bg-orange-100 text-orange-800 border-orange-200;
+  }
+
+  .mood-moderate {
+    @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+  }
+
+  .mood-good {
+    @apply bg-green-100 text-green-800 border-green-200;
+  }
+
+  .mood-excellent {
+    @apply bg-blue-100 text-blue-800 border-blue-200;
+  }
+
+  /* Animation utilities for gentle UX */
+  .animate-gentle-bounce {
+    animation: gentle-bounce 2s infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out;
+  }
+}
+
+/* Custom animations for mental wellness UX */
+@keyframes gentle-bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Print styles for mental health resources */
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+
+  .crisis-alert {
+    @apply border-black bg-white text-black;
+  }
+
+  body {
+    @apply text-black bg-white;
+  }
+}

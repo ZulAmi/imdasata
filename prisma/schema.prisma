@@ -1,0 +1,297 @@
+// Mental Wellness Assistant - Prisma Schema
+// Designed for PDPA compliance with anonymous user tracking
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Anonymous users with unique identifiers (no personal data)
+model AnonymousUser {
+  id                String             @id @default(uuid())
+  anonymousId       String             @unique // Frontend-generated UUID
+  language          String             @default("en") // en, zh, bn, ta, my, id
+  deviceFingerprint String?            // Hashed device identifier
+  timezone          String?
+  createdAt         DateTime           @default(now())
+  lastActiveAt      DateTime           @default(now())
+  isActive          Boolean            @default(true)
+  
+  // Relationships
+  phq4Assessments   PHQ4Assessment[]
+  moodLogs          MoodLog[]
+  interactions      UserInteraction[]
+  resourceInteractions ResourceInteraction[]
+  groupMemberships  GroupMembership[]
+  userBuddies       BuddyRelation[]    @relation("UserBuddies")
+  buddyOf           BuddyRelation[]    @relation("BuddyOf")
+  gamificationData  GamificationData?
+  serviceReferrals  ServiceReferral[]
+
+  @@map("anonymous_users")
+}
+
+// PHQ-4 Depression and Anxiety Assessment Results
+model PHQ4Assessment {
+  id             String        @id @default(uuid())
+  userId         String
+  user           AnonymousUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // PHQ-4 Questions (0-3 scale each)
+  question1Score Int           // Little interest or pleasure in doing things
+  question2Score Int           // Feeling down, depressed, or hopeless
+  question3Score Int           // Feeling nervous, anxious, or on edge
+  question4Score Int           // Not being able to stop or control worrying
+  
+  totalScore     Int           // Sum of all scores (0-12)
+  depressionScore Int          // Q1 + Q2 (0-6)
+  anxietyScore   Int           // Q3 + Q4 (0-6)
+  severityLevel  String        // "minimal", "mild", "moderate", "severe"
+  
+  completedAt    DateTime      @default(now())
+  language       String        @default("en")
+
+  @@map("phq4_assessments")
+}
+
+// Mental Health Resources Directory
+model MentalHealthResource {
+  id               String                    @id @default(uuid())
+  title            Json                      // Multi-language titles
+  description      Json                      // Multi-language descriptions
+  category         String                    // "crisis", "counseling", "support_group", "self_help", "emergency"
+  resourceType     String                    // "hotline", "website", "app", "location", "document"
+  contactInfo      Json?                     // Phone, email, address, website
+  availability     Json?                     // Hours, days, languages supported
+  targetAudience   String[]                  // ["migrant_workers", "general", "youth", "elderly"]
+  languages        String[]                  // Supported languages
+  isFree           Boolean                   @default(true)
+  isEmergency      Boolean                   @default(false)
+  isActive         Boolean                   @default(true)
+  priority         Int                       @default(0) // Higher = more important
+  
+  createdAt        DateTime                  @default(now())
+  updatedAt        DateTime                  @updatedAt
+  
+  // Relationships
+  interactions     ResourceInteraction[]
+  referrals        ServiceReferral[]
+
+  @@map("mental_health_resources")
+}
+
+// User Interaction and Engagement Tracking
+model UserInteraction {
+  id           String        @id @default(uuid())
+  userId       String
+  user         AnonymousUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  interactionType String     // "assessment_completed", "resource_accessed", "mood_logged", "group_joined", "chat_message"
+  entityType      String?    // "phq4", "resource", "mood", "group", "buddy"
+  entityId        String?    // ID of the related entity
+  metadata        Json?      // Additional interaction data
+  
+  timestamp       DateTime   @default(now())
+  sessionId       String?    // Track user sessions
+  language        String     @default("en")
+
+  @@map("user_interactions")
+}
+
+// Resource Access Tracking
+model ResourceInteraction {
+  id         String              @id @default(uuid())
+  userId     String
+  user       AnonymousUser       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resourceId String
+  resource   MentalHealthResource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  
+  accessedAt DateTime            @default(now())
+  duration   Int?                // Time spent viewing in seconds
+  helpful    Boolean?            // User feedback
+  language   String              @default("en")
+
+  @@map("resource_interactions")
+}
+
+// Peer Support Groups
+model SupportGroup {
+  id            String            @id @default(uuid())
+  name          Json              // Multi-language names
+  description   Json              // Multi-language descriptions
+  category      String            // "general", "anxiety", "depression", "workplace_stress", "cultural_adjustment"
+  language      String            // Primary language
+  maxMembers    Int               @default(50)
+  isActive      Boolean           @default(true)
+  isModerated   Boolean           @default(true)
+  
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  
+  // Relationships
+  memberships   GroupMembership[]
+
+  @@map("support_groups")
+}
+
+// Group Membership Management
+model GroupMembership {
+  id       String        @id @default(uuid())
+  userId   String
+  user     AnonymousUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  groupId  String
+  group    SupportGroup  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  
+  role     String        @default("member") // "member", "moderator", "admin"
+  joinedAt DateTime      @default(now())
+  leftAt   DateTime?
+  isActive Boolean       @default(true)
+
+  @@unique([userId, groupId])
+  @@map("group_memberships")
+}
+
+// Buddy System for Peer Support
+model BuddyRelation {
+  id         String        @id @default(uuid())
+  userId     String
+  user       AnonymousUser @relation("UserBuddies", fields: [userId], references: [id], onDelete: Cascade)
+  buddyId    String
+  buddy      AnonymousUser @relation("BuddyOf", fields: [buddyId], references: [id], onDelete: Cascade)
+  
+  status     String        @default("pending") // "pending", "active", "ended"
+  createdAt  DateTime      @default(now())
+  acceptedAt DateTime?
+  endedAt    DateTime?
+  
+  @@unique([userId, buddyId])
+  @@map("buddy_relations")
+}
+
+// Gamification System
+model GamificationData {
+  id                String        @id @default(uuid())
+  userId            String        @unique
+  user              AnonymousUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  totalPoints       Int           @default(0)
+  level             Int           @default(1)
+  streak            Int           @default(0) // Current daily check-in streak
+  longestStreak     Int           @default(0)
+  
+  // Achievement counters
+  assessmentsCount  Int           @default(0)
+  moodLogsCount     Int           @default(0)
+  resourcesViewed   Int           @default(0)
+  groupsJoined      Int           @default(0)
+  helpfulVotes      Int           @default(0)
+  
+  lastPointsEarned  DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  
+  // Relationships
+  achievements      Achievement[]
+
+  @@map("gamification_data")
+}
+
+// Achievement System
+model Achievement {
+  id            String           @id @default(uuid())
+  userId        String
+  user          GamificationData @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  
+  achievementType String         // "first_assessment", "mood_tracker", "helpful_member", "streak_7", etc.
+  title           Json           // Multi-language titles
+  description     Json           // Multi-language descriptions
+  points          Int
+  unlockedAt      DateTime       @default(now())
+
+  @@map("achievements")
+}
+
+// Mood Logs with Sentiment Analysis
+model MoodLog {
+  id              String        @id @default(uuid())
+  userId          String
+  user            AnonymousUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  moodScore       Int           // 1-10 scale
+  emotions        String[]      // ["happy", "anxious", "tired", "hopeful", etc.]
+  notes           String?       // Optional user notes (encrypted)
+  triggers        String[]      // ["work", "family", "health", "finance", etc.]
+  
+  // Sentiment analysis results
+  sentimentScore  Float?        // -1 to 1 (negative to positive)
+  sentimentLabel  String?       // "positive", "neutral", "negative"
+  emotionAnalysis Json?         // Detailed emotion breakdown
+  
+  loggedAt        DateTime      @default(now())
+  language        String        @default("en")
+
+  @@map("mood_logs")
+}
+
+// Service Referrals Tracking
+model ServiceReferral {
+  id           String               @id @default(uuid())
+  userId       String
+  user         AnonymousUser        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resourceId   String
+  resource     MentalHealthResource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  
+  referralType String               // "emergency", "counseling", "support_group", "hotline"
+  urgencyLevel String               // "low", "medium", "high", "critical"
+  status       String               @default("pending") // "pending", "contacted", "completed", "declined"
+  
+  referredAt   DateTime             @default(now())
+  contactedAt  DateTime?
+  completedAt  DateTime?
+  followUpAt   DateTime?
+  
+  notes        String?              // Admin notes (encrypted)
+  outcome      String?              // "helpful", "not_helpful", "no_response"
+  language     String               @default("en")
+
+  @@map("service_referrals")
+}
+
+// Admin Dashboard Analytics (Aggregated, Anonymous Data)
+model AnalyticsSummary {
+  id                    String   @id @default(uuid())
+  date                  DateTime @unique @db.Date
+  
+  // User metrics
+  activeUsers           Int      @default(0)
+  newUsers              Int      @default(0)
+  returningUsers        Int      @default(0)
+  
+  // Assessment metrics
+  phq4Completed         Int      @default(0)
+  avgPhq4Score          Float?
+  highRiskUsers         Int      @default(0) // PHQ-4 score >= 9
+  
+  // Engagement metrics
+  moodLogsCreated       Int      @default(0)
+  resourcesAccessed     Int      @default(0)
+  groupInteractions     Int      @default(0)
+  buddyConnections      Int      @default(0)
+  
+  // Content metrics
+  avgSessionDuration    Float?   // In minutes
+  topResourceCategory   String?
+  mostUsedLanguage      String?
+  
+  // Crisis metrics
+  emergencyReferrals    Int      @default(0)
+  highUrgencyReferrals  Int      @default(0)
+  
+  createdAt             DateTime @default(now())
+
+  @@map("analytics_summary")
+}
