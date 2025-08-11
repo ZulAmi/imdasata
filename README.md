@@ -1,72 +1,100 @@
 # SATA - Sentiment Analysis Therapy Assistant
 
-A comprehensive AI-powered mental health platform combining voice sentiment analysis, mood tracking, and clinical-grade reporting for mental health professionals and individuals seeking emotional wellbeing support.
+[![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![Azure](https://img.shields.io/badge/Azure-Cognitive%20Services-blue)](https://azure.microsoft.com/services/cognitive-services/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-![SATA Platform](https://img.shields.io/badge/Platform-Mental%20Health%20AI-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue) ![React](https://img.shields.io/badge/React-18-blue) ![Next.js](https://img.shields.io/badge/Next.js-14-black) ![Azure](https://img.shields.io/badge/Azure-Cognitive%20Services-blue)
+> A comprehensive AI-powered mental health platform designed specifically for migrant workers, combining voice sentiment analysis, peer support systems, and clinical-grade reporting for mental health professionals and individuals seeking emotional wellbeing support.
 
-## 🌟 Key Features
+## 🌟 Overview
 
-### 🎙️ Voice Sentiment Analysis
+SATA is a privacy-first mental health platform that leverages advanced AI technologies to provide culturally sensitive support for migrant workers and vulnerable populations. The platform integrates voice sentiment analysis, comprehensive mood tracking, peer support systems, and professional healthcare reporting in a unified, accessible interface.
 
-- **Real-time emotion detection** from voice recordings using Azure Cognitive Services
-- **Multi-language support** with accent recognition
-- **Advanced audio processing** with noise reduction and quality enhancement
-- **Emotional tone extraction** with confidence scoring
-- **Stress indicator detection** and mental health keyword identification
-- **Privacy-first design** with on-device processing capabilities
+## 🎯 Key Features
 
-### 😊 Comprehensive Mood Tracking
+### 🎙️ Advanced Voice Sentiment Analysis
+
+- **Real-time emotion detection** using Azure Cognitive Services
+- **Multi-language support** (English, Chinese, Bengali, Tamil, Myanmar, Indonesian, Thai, Vietnamese)
+- **Stress indicator identification** and mental health keyword extraction
+- **Privacy-first processing** with on-device capabilities where possible
+- **Cultural context awareness** for accent and dialect recognition
+
+### 😊 Comprehensive Mood Tracking System
 
 - **Emoji-based mood selection** with intuitive 10-point scale
-- **Voice note integration** with sentiment analysis correlation
-- **Multi-modal input** supporting text, voice, and tag-based categorization
-- **Real-time trend visualization** with pattern recognition
+- **Voice note integration** with automatic sentiment correlation
+- **Multi-modal input** supporting text, voice, and contextual tags
+- **Real-time trend visualization** with pattern recognition algorithms
 - **Personalized AI insights** with actionable recommendations
-- **Daily streak tracking** and habit building features
+- **Healthcare provider export** in multiple professional formats
 
-### 📈 Advanced Analytics Engine
+### 👥 Peer Support & Community Systems
 
-- **Linear regression analysis** for mood trend prediction
-- **Pattern recognition algorithms** for emotional state identification
-- **Correlation analysis** with clinical assessment scores (PHQ-4, GAD-7)
-- **Statistical confidence intervals** and trend reliability scoring
-- **Anomaly detection** for concerning patterns
-- **Proactive intervention triggers** based on risk assessment
+- **Smart buddy pairing** based on compatibility algorithms
+- **Group chat functionality** with language and interest-based matching
+- **Moderation dashboard** with automated content filtering
+- **Safety reporting mechanisms** with real-time intervention protocols
+- **Gamification system** with achievements and trust scoring
 
-### 🏥 Healthcare Integration
+### 🏥 Clinical-Grade Healthcare Integration
 
 - **HIPAA-compliant reporting** with professional clinical formatting
-- **Multi-format data export** (HTML reports, JSON data, CSV summaries)
-- **Assessment correlation analysis** with standardized mental health tools
-- **Anonymous data processing** with privacy protection controls
+- **Assessment integration** (PHQ-4, GAD-7, custom scales)
+- **Automated report generation** (weekly, monthly, compliance audits)
+- **Risk assessment algorithms** with proactive intervention triggers
 - **Healthcare provider dashboards** with patient progress tracking
-- **Clinical decision support** through AI-generated insights
+
+### 🎮 Engagement & Gamification
+
+- **Comprehensive point system** rewarding healthy behaviors
+- **Achievement badges** for consistent engagement
+- **Streak tracking** for daily habits and assessments
+- **QR code rewards** for real-world benefit redemption
+- **Leaderboards** with privacy controls
+
+### 📊 Advanced Analytics & Reporting
+
+- **Real-time engagement tracking** with behavioral pattern analysis
+- **Automated report generation** for administrators and healthcare providers
+- **Resource utilization analytics** with gap analysis
+- **Intervention effectiveness measurement** with outcome tracking
+- **Compliance monitoring** with privacy audit capabilities
 
 ## 🏗️ Technical Architecture
 
-### Frontend Stack
+### Frontend Technologies
 
-- **React 18** with TypeScript for type-safe component development
-- **Next.js 14.2.15** for full-stack framework with SSR/SSG capabilities
-- **Tailwind CSS** for responsive design and component styling
-- **Chart.js/Recharts** for advanced data visualization
-- **Web Audio API** for voice recording and processing
+```
+React 18 + TypeScript     → Type-safe component development
+Next.js 14.2.15           → Full-stack framework with SSR/SSG
+Tailwind CSS              → Responsive design system
+Chart.js/Recharts         → Advanced data visualization
+Web Audio API             → Voice recording and processing
+WebRTC                    → Secure peer-to-peer communication
+```
 
-### Backend Integration
+### Backend & AI Integration
 
-- **Azure Cognitive Services** for voice sentiment analysis
-- **EventEmitter Architecture** for real-time data processing
-- **LocalStorage/IndexedDB** for client-side data persistence
-- **RESTful API design** for healthcare provider integration
-- **WebRTC** for secure voice transmission
+```
+Azure Cognitive Services  → Voice analysis and NLP
+EventEmitter Architecture → Real-time data processing
+LocalStorage/IndexedDB    → Client-side data persistence
+RESTful API Design        → Healthcare provider integration
+Service Workers           → Push notifications and offline support
+```
 
 ### AI/ML Components
 
-- **Natural Language Processing** for text sentiment analysis
-- **Voice Recognition** with emotional tone detection
-- **Pattern Recognition** algorithms for mood trend analysis
-- **Machine Learning** models for personalized insight generation
-- **Statistical Analysis** with confidence scoring and prediction
+```
+Natural Language Processing → Text sentiment analysis
+Voice Recognition          → Emotional tone detection
+Pattern Recognition        → Mood trend analysis
+Machine Learning Models    → Personalized insight generation
+Statistical Analysis       → Confidence scoring and prediction
+```
 
 ## 📁 Project Structure
 
@@ -74,27 +102,52 @@ A comprehensive AI-powered mental health platform combining voice sentiment anal
 SATA/
 ├── src/
 │   ├── components/
-│   │   ├── VoiceAnalysisInterface.tsx      # Voice recording and analysis UI
-│   │   ├── MoodLoggingInterface.tsx        # Comprehensive mood tracking
-│   │   ├── MoodTrendsVisualization.tsx     # Data visualization charts
-│   │   └── HealthcareExport.tsx            # Clinical reporting system
+│   │   ├── chat/
+│   │   │   ├── PeerChatInterface.tsx           # Peer support chat system
+│   │   │   └── BuddyInterface.tsx              # Buddy pairing interface
+│   │   ├── VoiceAnalysisInterface.tsx          # Voice recording and analysis
+│   │   ├── MoodLoggingInterface.tsx            # Comprehensive mood tracking
+│   │   ├── MoodTrendsVisualization.tsx         # Data visualization
+│   │   ├── GamificationInterface.tsx           # Points and achievements
+│   │   ├── EngagementAnalyticsDashboard.tsx    # Analytics dashboard
+│   │   ├── AdminDashboard.tsx                  # Administrative interface
+│   │   └── ReportingEngine.tsx                 # Automated report generation
 │   ├── lib/
-│   │   ├── voice-sentiment-analyzer.ts     # Core voice analysis engine
-│   │   ├── mood-analytics-engine.ts        # Advanced mood analytics
-│   │   ├── azure-integration.ts            # Azure Cognitive Services
-│   │   └── engagement-integration.ts       # User engagement tracking
+│   │   ├── voice-sentiment-analyzer.ts         # Core voice analysis engine
+│   │   ├── mood-analytics-engine.ts            # Advanced mood analytics
+│   │   ├── peer-chat-system.ts                 # Peer support logic
+│   │   ├── buddy-system.ts                     # Buddy matching algorithms
+│   │   ├── gamification-system.ts              # Points and achievements
+│   │   ├── engagement-tracker.ts               # User engagement analytics
+│   │   ├── azure-cognitive-services.ts         # Azure AI integration
+│   │   └── resources-directory.ts              # Mental health resources
 │   ├── pages/
-│   │   ├── index.tsx                       # Main landing page
-│   │   ├── voice-analysis.tsx              # Voice analysis demo page
-│   │   └── mood-dashboard.tsx              # Comprehensive mood dashboard
+│   │   ├── index.tsx                           # Main landing page
+│   │   ├── voice-analysis.tsx                  # Voice sentiment demo
+│   │   ├── mood-dashboard.tsx                  # Mood tracking dashboard
+│   │   ├── peer-support-chat.tsx               # Peer chat interface
+│   │   ├── buddy-system.tsx                    # Buddy pairing system
+│   │   ├── gamification.tsx                    # Gamification dashboard
+│   │   ├── reports.tsx                         # Automated reporting
+│   │   ├── analytics-hub.tsx                   # Comprehensive analytics
+│   │   ├── admin-dashboard.tsx                 # Admin interface
+│   │   └── resources-admin.tsx                 # Resource management
 │   └── types/
-│       └── mood-types.ts                   # TypeScript type definitions
+│       ├── mood-types.ts                       # Mood tracking types
+│       ├── peer-support-types.ts               # Peer support types
+│       └── gamification-types.ts               # Gamification types
 ├── public/
+│   ├── sw-*.js                                 # Service workers
+│   └── manifest.json                           # PWA configuration
 ├── docs/
-└── README.md
+│   ├── ADMIN_DASHBOARD_README.md               # Admin documentation
+│   ├── REPORTING_SYSTEM_DOCS.md                # Reporting documentation
+│   └── API_DOCUMENTATION.md                    # API reference
+└── .github/
+    └── copilot-instructions.md                 # Development guidelines
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 
@@ -132,6 +185,7 @@ SATA/
    # Application Settings
    NEXT_PUBLIC_APP_URL=http://localhost:3000
    NEXT_PUBLIC_ENABLE_ANALYTICS=true
+   NEXT_PUBLIC_PRIVACY_MODE=true
    ```
 
 4. **Run the development server**
@@ -142,182 +196,162 @@ SATA/
    yarn dev
    ```
 
-5. **Open the application**
-   Navigate to `http://localhost:3000` in your browser
+5. **Access the application**
+   - Main Platform: `http://localhost:3000`
+   - Admin Dashboard: `http://localhost:3000/admin-login`
+   - Reports System: `http://localhost:3000/reports`
 
-## 🎯 Core Functionality
+## 📱 Platform Features
+
+### User-Facing Applications
+
+| Feature                | Endpoint             | Description                            |
+| ---------------------- | -------------------- | -------------------------------------- |
+| **Voice Analysis**     | `/voice-analysis`    | AI-powered voice sentiment analysis    |
+| **Mood Dashboard**     | `/mood-dashboard`    | Comprehensive mood tracking and trends |
+| **Peer Support**       | `/peer-support-chat` | Community chat with language matching  |
+| **Buddy System**       | `/buddy-system`      | One-on-one peer support pairing        |
+| **Gamification**       | `/gamification`      | Points, achievements, and rewards      |
+| **Resource Directory** | `/resources`         | Mental health services and information |
+
+### Administrative Interfaces
+
+| Feature                | Endpoint              | Description                      |
+| ---------------------- | --------------------- | -------------------------------- |
+| **Admin Dashboard**    | `/admin-dashboard`    | Real-time platform monitoring    |
+| **Reports System**     | `/reports`            | Automated report generation      |
+| **Analytics Hub**      | `/analytics-hub`      | Comprehensive platform analytics |
+| **Chat Moderation**    | `/chat-moderation`    | Peer support moderation tools    |
+| **Buddy Admin**        | `/buddy-admin`        | Buddy system management          |
+| **Resources Admin**    | `/resources-admin`    | Resource directory management    |
+| **Gamification Admin** | `/gamification-admin` | Points and rewards management    |
+
+## 🔧 Core Functionality
 
 ### Voice Sentiment Analysis Workflow
 
-1. **Audio Capture**: High-quality voice recording with noise reduction
-2. **Azure Processing**: Speech-to-text conversion with emotional tone analysis
-3. **Sentiment Extraction**: Multi-dimensional emotion scoring (happiness, stress, anxiety)
+1. **Audio Capture**: High-quality recording with noise reduction
+2. **Azure Processing**: Speech-to-text with emotional tone analysis
+3. **Sentiment Extraction**: Multi-dimensional emotion scoring
 4. **Pattern Recognition**: Historical trend analysis and anomaly detection
-5. **Insight Generation**: Personalized recommendations and intervention triggers
+5. **Insight Generation**: Personalized recommendations and interventions
 
-### Mood Tracking Process
+### Peer Support System
 
-1. **Emoji Selection**: Intuitive 10-point mood scale with emotional descriptors
-2. **Multi-Modal Input**: Text descriptions, voice notes, and contextual tags
-3. **Real-Time Analysis**: Immediate sentiment scoring and trend calculation
-4. **Pattern Detection**: Long-term mood patterns and correlation analysis
-5. **Healthcare Integration**: Professional report generation for clinical use
+1. **Smart Matching**: Algorithm-based pairing by language, interests, experience
+2. **Group Formation**: Auto-creation of support groups with moderation
+3. **Safety Mechanisms**: Real-time content filtering and reporting systems
+4. **Engagement Tracking**: Interaction quality and frequency monitoring
+5. **Crisis Intervention**: Automated escalation for high-risk situations
 
-### Healthcare Provider Features
+### Healthcare Integration
 
-1. **Patient Dashboard**: Comprehensive mood tracking overview
+1. **Assessment Correlation**: Integration with PHQ-4, GAD-7, and custom scales
 2. **Clinical Reports**: HIPAA-compliant professional documentation
-3. **Assessment Integration**: PHQ-4, GAD-7, and custom scale correlation
-4. **Progress Tracking**: Longitudinal analysis with treatment effectiveness
-5. **Risk Assessment**: Automated alerts for concerning patterns
+3. **Progress Tracking**: Longitudinal analysis with treatment effectiveness
+4. **Risk Assessment**: Automated alerts for concerning patterns
+5. **Provider Dashboard**: Comprehensive patient overview for healthcare professionals
 
-## 📊 Analytics & Insights
+## 📊 Analytics & Reporting
 
-### Mood Analytics Engine
+### Automated Report Generation
 
-- **Trend Analysis**: Linear regression with confidence intervals
-- **Pattern Recognition**: Seasonal, weekly, and daily mood patterns
-- **Correlation Analysis**: Mood vs. external factors and assessments
-- **Anomaly Detection**: Statistical outliers and concerning patterns
-- **Predictive Modeling**: Future mood state prediction with confidence scoring
+- **Mental Health Trends**: Weekly/monthly mood and assessment analysis
+- **Resource Gap Analysis**: Demand vs. availability with recommendations
+- **User Journey Insights**: Behavior patterns and engagement analysis
+- **Intervention Effectiveness**: Success rates and outcome tracking
+- **Compliance Audits**: Privacy and security monitoring reports
 
-### Healthcare Metrics
+### Real-time Metrics
 
-- **Assessment Correlation**: PHQ-4, GAD-7, and custom tool integration
-- **Treatment Effectiveness**: Before/after intervention analysis
-- **Risk Stratification**: Patient categorization based on mood patterns
-- **Clinical Decision Support**: Evidence-based recommendation generation
+- **User Engagement**: Daily/weekly/monthly active users
+- **Feature Usage**: Adoption rates and preference patterns
+- **Content Interaction**: Assessment completion and resource utilization
+- **Peer Support**: Participation levels and community health
+- **System Performance**: Health monitoring and performance analytics
 
 ## 🔒 Privacy & Security
 
-### Data Protection
+### HIPAA Compliance
 
-- **HIPAA Compliance**: Healthcare-grade data handling and storage
-- **Anonymous Processing**: User identity protection with secure identifiers
-- **On-Device Analysis**: Local processing where possible to minimize data transmission
-- **Encryption**: End-to-end encryption for sensitive data
-- **Access Controls**: Role-based permissions for healthcare providers
-
-### Privacy Features
-
-- **Data Anonymization**: Personal information removal for analytics
+- **Data Anonymization**: Automatic removal of personally identifiable information
+- **Encryption**: End-to-end encryption for sensitive communications
+- **Access Controls**: Role-based permissions with audit trails
 - **Consent Management**: Granular privacy controls and user consent
-- **Data Retention**: Configurable retention policies with secure deletion
-- **Audit Trails**: Comprehensive logging for compliance and security
-- **MoodLog**: Daily mood tracking with sentiment analysis
-- **MentalHealthResource**: Curated directory of mental health resources
-- **SupportGroup**: Peer support groups with multi-language support
-- **BuddyRelation**: Peer buddy system for mutual support
+- **Secure Storage**: Healthcare-grade data handling and retention policies
 
-### Engagement & Analytics
+### Cultural Sensitivity
 
-- **UserInteraction**: Comprehensive user engagement tracking
-- **GamificationData**: Points, levels, achievements, and streaks
-- **ServiceReferral**: Crisis intervention and service connection tracking
-- **AnalyticsSummary**: Anonymous aggregated analytics for admin dashboard
+- **Multi-language Support**: Native language interfaces and content
+- **Cultural Context**: Culturally appropriate mental health resources
+- **Anonymous Operation**: Privacy protection for vulnerable populations
+- **Migrant Worker Focus**: Specialized support for diaspora communities
 
-### Key Features
+## 🌐 Multi-Language Support
 
-- Multi-language JSON fields for internationalization
-- PDPA-compliant anonymous user tracking
-- Gamification system with achievements
-- Crisis intervention workflow
-- Comprehensive analytics without personal data exposure
+Supported Languages:
 
-## Getting Started
+- **English** (en) - Primary interface
+- **中文** (zh) - Chinese (Simplified)
+- **বাংলা** (bn) - Bengali
+- **தமிழ்** (ta) - Tamil
+- **မြန်မာ** (my) - Myanmar (Burmese)
+- **Bahasa Indonesia** (idn) - Indonesian
+- **ไทย** (th) - Thai
+- **Tiếng Việt** (vi) - Vietnamese
 
-1. Install dependencies:
+## 🎮 Gamification System
 
-   ```sh
-   npm install
-   ```
+### Point Categories
 
-2. Set up environment variables:
+- **Daily Check-ins**: 10-25 points (mood bonuses, streak multipliers)
+- **Assessments**: 25-40 points (completion + improvement bonuses)
+- **Educational Content**: 2-20 points (engagement and completion)
+- **Peer Support**: 5-25 points (quality ratings, leadership bonuses)
+- **Buddy Interactions**: 5-40 points (duration, quality, sentiment)
+- **Resource Utilization**: 2-50 points (help-seeking courage bonuses)
+- **Streak Maintenance**: 2-200 points (weekly, monthly milestones)
 
-   ```sh
-   cp .env.example .env
-   # Edit .env with your database URLs and API keys
-   ```
+### Achievement System
 
-3. Set up the database:
+- **4 Rarity Levels**: Common, Rare, Epic, Legendary
+- **10 User Levels**: From Newcomer to Enlightened
+- **Badge Categories**: Engagement, Support, Learning, Community
+- **QR Code Rewards**: Real-world benefit redemption system
 
-   ```sh
-   # Generate Prisma client
-   npm run db:generate
+## 🤝 Contributing
 
-   # Run database migrations
-   npm run db:migrate
+We welcome contributions from developers, mental health professionals, and community members. Please read our contributing guidelines and code of conduct before submitting pull requests.
 
-   # Seed the database with initial data
-   npm run db:seed
-   ```
+### Development Workflow
 
-4. Run the development server:
+1. Fork the repository
+2. Create a feature branch
+3. Follow TypeScript and React best practices
+4. Ensure HIPAA compliance in healthcare features
+5. Add comprehensive tests
+6. Submit a pull request with detailed description
 
-   ```sh
-   npm run dev
-   ```
+## 📄 License
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Available Scripts
+## 🆘 Support
 
-- `npm run dev` - Start development server with Turbopack
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run db:generate` - Generate Prisma client
-- `npm run db:migrate` - Run database migrations
-- `npm run db:studio` - Open Prisma Studio (database GUI)
-- `npm run db:seed` - Seed database with initial data
-- `npm run db:reset` - Reset database (⚠️ destroys all data)
+For technical support, feature requests, or mental health resources:
 
-## API Endpoints
+- **Documentation**: Check the `/docs` directory for detailed guides
+- **Issues**: Report bugs via GitHub Issues
+- **Community**: Join our community discussions
+- **Emergency**: For mental health emergencies, contact local crisis services
 
-### Assessment APIs
+## 🙏 Acknowledgments
 
-- `POST /api/assessment/phq4` - Submit PHQ-4 depression/anxiety assessment
-- `GET /api/assessment/history` - Get user's assessment history
+- **Azure Cognitive Services** for AI capabilities
+- **Mental Health Professionals** for clinical guidance
+- **Migrant Worker Communities** for feedback and testing
+- **Open Source Community** for foundational technologies
 
-### Mood Tracking
+---
 
-- `POST /api/mood/log` - Log daily mood with sentiment analysis
-- `GET /api/mood/trends` - Get mood trends and insights
-
-### Resources
-
-- `GET /api/resources` - Get mental health resources (filterable by category/language)
-- `POST /api/resources/interaction` - Track resource access
-
-### Support & Community
-
-- `GET /api/groups` - Get available support groups
-- `POST /api/groups/join` - Join a support group
-- `POST /api/buddy/request` - Request a buddy connection
-
-## Features
-
-- **WhatsApp Integration:** Easily connect with users via WhatsApp.
-- **Multi-language:** Supports six languages for inclusivity.
-- **PWA:** Optimized for low-end devices.
-- **Anonymous Auth:** Protects user privacy.
-- **PDPA Compliance:** Handles data responsibly.
-- **PostgreSQL & Prisma:** Robust, scalable data storage.
-- **Redis:** Fast caching and session management.
-
-## Privacy & Compliance
-
-This application is designed with PDPA compliance in mind:
-
-- No collection of personal identifying information
-- Anonymous user tracking with UUIDs
-- Encrypted sensitive data fields
-- Automatic data anonymization utilities
-- Comprehensive audit trails
-- **PDPA Compliance:** Handles data responsibly.
-- **PostgreSQL & Prisma:** Robust, scalable data storage.
-- **Redis:** Fast caching and session management.
-
-## License
-
-MIT
+**SATA** - Empowering mental health through AI, community, and culturally sensitive care for migrant workers and vulnerable populations worldwide.
