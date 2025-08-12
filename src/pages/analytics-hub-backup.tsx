@@ -555,12 +555,6 @@ export default function IntegratedAnalyticsHub() {
     </div>
   );
 }
-    
-    trackInteraction('analytics-hub', 'role-switched', {
-      fromRole: userRole,
-      toRole: newRole
-    });
-  };
 
   const renderCombinedView = () => {
     return (
