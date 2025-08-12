@@ -350,3 +350,5 @@ auto-generated/
 # Temporary directories
 tmp/
 temp/
+
+.vercel
