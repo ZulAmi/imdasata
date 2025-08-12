@@ -133,6 +133,10 @@ export default function SATAHomePage() {
                 <span>📊</span>
                 <span>Admin</span>
               </Link>
+              <Link href="/i18n-test" className="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-1">
+                <span>🌍</span>
+                <span>i18n Test</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -177,7 +181,7 @@ export default function SATAHomePage() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className={`relative p-6 rounded-2xl text-white transform transition-all duration-500 hover:scale-105 cursor-pointer ${
+                  className={`relative p-6 rounded-2xl text-black transform transition-all duration-500 hover:scale-105 cursor-pointer ${
                     currentFeature === index ? 'scale-105 shadow-2xl' : 'shadow-lg'
                   }`}
                   style={{
@@ -186,9 +190,9 @@ export default function SATAHomePage() {
                   onClick={() => handleNavigate(feature.demo)}
                 >
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-white/90 mb-3">{feature.description}</p>
-                  <p className="text-sm text-white/80">{feature.details}</p>
+                  <h3 className="text-xl font-bold mb-2 text-black">{feature.title}</h3>
+                  <p className="text-black/90 mb-3">{feature.description}</p>
+                  <p className="text-sm text-black/80">{feature.details}</p>
                   
                   {currentFeature === index && (
                     <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full text-xs font-bold">

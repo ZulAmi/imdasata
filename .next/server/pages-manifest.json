@@ -2,9 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/analytics-hub": "pages/analytics-hub.js",
   "/": "pages/index.js",
-  "/admin-login": "pages/admin-login.js",
-  "/reports": "pages/reports.js",
-  "/admin-dashboard": "pages/admin-dashboard.js"
+  "/i18n-test": "pages/i18n-test.js"
 }

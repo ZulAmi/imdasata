@@ -8,13 +8,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const { anonymousId, q1, q2, q3, q4, language = 'en' } = req.body;
+    const { anonymousId, q1, q2, q3, q4, answers, language = 'en' } = req.body;
+
+    // Support both individual questions and answers array
+    let scores: number[];
+    if (answers && Array.isArray(answers)) {
+      scores = answers;
+    } else if (q1 !== undefined && q2 !== undefined && q3 !== undefined && q4 !== undefined) {
+      scores = [q1, q2, q3, q4];
+    } else {
+      return res.status(400).json({ error: 'Invalid assessment data' });
+    }
 
     // Validate input
-    if (!anonymousId || ![q1, q2, q3, q4].every(score => 
+    if (!anonymousId || !scores.every(score => 
       Number.isInteger(score) && score >= 0 && score <= 3
-    )) {
-      return res.status(400).json({ error: 'Invalid assessment data' });
+    ) || scores.length !== 4) {
+      return res.status(400).json({ error: 'Invalid answer values. Each answer must be 0-3.' });
     }
 
     // Find or create anonymous user
@@ -38,9 +48,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Calculate scores
-    const totalScore = q1 + q2 + q3 + q4;
-    const depressionScore = q1 + q2;
-    const anxietyScore = q3 + q4;
+    const [q1Score, q2Score, q3Score, q4Score] = scores;
+    const totalScore = q1Score + q2Score + q3Score + q4Score;
+    const depressionScore = q1Score + q2Score;
+    const anxietyScore = q3Score + q4Score;
 
     // Determine severity level
     let severityLevel = 'minimal';
@@ -52,10 +63,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const assessment = await prisma.pHQ4Assessment.create({
       data: {
         userId: user.id,
-        question1Score: q1,
-        question2Score: q2,
-        question3Score: q3,
-        question4Score: q4,
+        question1Score: q1Score,
+        question2Score: q2Score,
+        question3Score: q3Score,
+        question4Score: q4Score,
         totalScore,
         depressionScore,
         anxietyScore,
