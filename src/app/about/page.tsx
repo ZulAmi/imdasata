@@ -6,49 +6,49 @@ import { Heart, Shield, Brain, Users, Globe, Award, ArrowRight, CheckCircle } fr
 export default function AboutPage() {
   const teamMembers = [
     {
-      name: "Dr. Sarah Chen",
+      name: "Zulhilmi Rahmat",
       role: "Clinical Psychologist & AI Ethics Lead",
-      image: "/images/team/sarah.jpg",
+      image: "/images/team/zulhilmi.jpg",
       bio: "15+ years in mental health research and AI applications in healthcare."
     },
     {
-      name: "Alex Rivera",
+      name: "Zulhilmi Rahmat",
       role: "Lead AI Engineer",
-      image: "/images/team/alex.jpg", 
+      image: "/images/team/zulhilmi.jpg", 
       bio: "Specialized in natural language processing and conversational AI systems."
     },
     {
-      name: "Dr. Michael Thompson",
+      name: "Zulhilmi Rahmatn",
       role: "Psychiatrist & Medical Advisor",
-      image: "/images/team/michael.jpg",
+      image: "/images/team/zulhilmi.jpg",
       bio: "Board-certified psychiatrist with expertise in digital mental health interventions."
     },
     {
-      name: "Maria Santos",
+      name: "Zulhilmi Rahmat",
       role: "Privacy & Security Officer",
-      image: "/images/team/maria.jpg",
+      image: "/images/team/zulhilmi.jpg",
       bio: "Cybersecurity expert ensuring the highest standards of user privacy protection."
     }
   ];
 
   const milestones = [
     {
-      year: "2023",
+      year: "2025",
       title: "Foundation",
-      description: "SATA was founded with a mission to make mental health support accessible and anonymous."
+      description: "We were founded with a mission to make mental health support accessible and anonymous."
     },
     {
-      year: "2024",
+      year: "2025",
       title: "AI Integration", 
       description: "Launched advanced AI-powered conversation management with crisis detection capabilities."
     },
     {
-      year: "2025",
+      year: "2026",
       title: "Global Expansion",
       description: "Expanded to 6 languages with cultural adaptation and 24/7 multilingual support."
     },
     {
-      year: "2025",
+      year: "2027",
       title: "Innovation",
       description: "Introduced predictive analytics and personalized mental health interventions."
     }
